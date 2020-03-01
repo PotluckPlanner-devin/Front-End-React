@@ -1,21 +1,26 @@
 import React from "react";
 
 // component imports
-import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
 import Footer from "./components/Footer";
+import Profile from "./components/Profile";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Switch>
-        <Login exact path="/" />
-        <Login path="/login" />
-        <Registration path="/registration" />
-      </Switch>
-      <Footer />
+      <Sidebar />
+      <div>
+        <Switch>
+          <Login exact path="/" />
+          <Login path="/login" />
+          <Registration path="/registration" />
+          <Profile path="/profile/:id" />
+          <Event path="/event/:id" />
+        </Switch>
+        <Footer />
+      </div>
     </div>
   );
 }
