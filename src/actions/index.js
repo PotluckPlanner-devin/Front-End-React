@@ -25,3 +25,12 @@ export const getUser = call => dispatch => {
     })
     .catch(err => console.log("Get User Error", err));
 };
+
+export const getEvents = () => dispatch => {
+  axiosWithAuth()
+    .get("/api/potluck/")
+    .then(res => {
+      console.log("Events Response", res);
+    })
+    .catch(err => console.log(err));
+};
