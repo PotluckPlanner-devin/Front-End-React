@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 // component imports
-import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
 import Footer from "./components/Footer";
@@ -11,7 +11,7 @@ import Profile from "./components/Profile";
 function App() {
   return (
     <div className="App">
-      <Sidebar />
+      <Header />
       <div>
         <Switch>
           <Route exact path="/" component={Login} />
