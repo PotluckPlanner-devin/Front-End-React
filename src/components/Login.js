@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
+import { authenticate } from "../actions";
 
-const Login = () => {
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: ""
-  });
+const initialCredentials = {
+  username: "",
+  password: ""
+};
+
+const Login = props => {
+  const [credentials, setCredentials] = useState(initialCredentials);
 
   // console.log(credentials);
 
@@ -19,15 +22,8 @@ const Login = () => {
 
   const login = e => {
     e.preventDefault();
-    axios
-      .post(
-        "https://potluckplanner-buildweek.herokuapp.com/api/authentication/login",
-        credentials
-      )
-      .then(res => {
-        console.log("Login Response", res);
-      })
-      .catch(err => console.log("Login Error", err));
+    props.authenticate(credentials, props);
+    setCredentials(initialCredentials);
   };
 
   return (
@@ -68,4 +64,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect(mapStateToProps, { authenticate })(Login);
