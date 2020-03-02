@@ -14,8 +14,7 @@ function App() {
       <Sidebar />
       <div>
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/login" component={Login} />
+          <Route exact path="/" render={props => <Login {...props} />} />
           <Route path="/registration" component={Registration} />
           <Route path="/profile/:id" component={Profile} />
           <Route path="/event/:id" component={Event} />
