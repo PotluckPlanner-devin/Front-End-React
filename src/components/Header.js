@@ -1,8 +1,13 @@
 import React from "react";
-import UserInfo from "./UserInfo";
+import { Link } from "react-router-dom";
 
-const Sidebar = () => {
-  return <div>Sidebar!</div>;
-};
+function Header() {
+  return (
+    <div className = "header">
+      <Link className="navlink" to=''>Sign Up</Link>
+      <Link className="navlink" to=''>Login</Link>
+    </div>
+  );
+}
 
-export default Sidebar;
+export default Header;
