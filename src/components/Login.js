@@ -11,8 +11,6 @@ const initialCredentials = {
 const Login = props => {
   const [credentials, setCredentials] = useState(initialCredentials);
 
-  // console.log(credentials);
-
   const handleChange = e => {
     setCredentials({
       ...credentials,
@@ -22,6 +20,7 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
+    // action for axios request
     props.authenticate(credentials, props);
     setCredentials(initialCredentials);
   };
