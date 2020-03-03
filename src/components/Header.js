@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 // create conditional statement for rendering components
 // create logout function
 const Header = props => {
-  console.log(props);
   return (
     <div className="header">
       <Link className="navlink" to="">
