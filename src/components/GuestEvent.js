@@ -1,7 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const GuestEvent = () => {
+// display event info
+
+const GuestEvent = props => {
+  console.log(props);
   return <div>Guest Event!</div>;
 };
 
-export default GuestEvent;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps, {})(GuestEvent);

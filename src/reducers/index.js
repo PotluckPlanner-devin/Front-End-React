@@ -6,7 +6,14 @@ const initialState = {
     email: "",
     call: ""
   },
-  events: []
+  events: [],
+  event: {
+    id: "",
+    user_id: "",
+    location: "",
+    date: "",
+    time: ""
+  }
 };
 
 export const reducer = (state = initialState, action) => {
@@ -34,6 +41,15 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         events: action.payload
+      };
+    case "GET_EVENT":
+      return {
+        ...state,
+        id: action.payload.id,
+        user_id: action.payload.user_id,
+        location: action.payload.location,
+        date: action.payload.date,
+        time: action.payload.time
       };
     default:
       return state;

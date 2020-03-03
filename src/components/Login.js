@@ -20,7 +20,6 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
-    // action for axios request
     props.authenticate(credentials, props);
     setCredentials(initialCredentials);
   };
