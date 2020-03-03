@@ -42,6 +42,10 @@ export const reducer = (state = initialState, action) => {
         date: action.payload.date,
         time: action.payload.time
       };
+    case "LOG_OUT":
+      return {
+        initialState
+      };
     default:
       return state;
   }

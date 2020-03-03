@@ -29,3 +29,7 @@ export const getEvent = id => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const logOut = () => {
+  return { type: "LOG_OUT" };
+};

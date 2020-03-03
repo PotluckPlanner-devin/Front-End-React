@@ -5,10 +5,9 @@ import { getUser, getEvents } from "../actions";
 
 // component imports
 import EventCard from "./EventCard";
-const { id } = useParams();
 
 const Profile = props => {
-  console.log(props);
+  const { id } = useParams();
 
   useEffect(() => {
     props.getUser(id);
