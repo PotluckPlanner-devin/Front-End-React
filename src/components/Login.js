@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { authenticate } from "../actions";
+import axios from "axios";
 
 const initialCredentials = {
   username: "",
@@ -72,8 +71,4 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {};
-};
-
-export default connect(mapStateToProps, { authenticate })(Login);
+export default Login;
