@@ -16,7 +16,7 @@ const Event = props => {
 
   return (
     <div>
-      {props.user === props.event_user ? <HostEvent /> : <GuestEvent />}
+      {props.user === props.event.user_id ? <HostEvent /> : <GuestEvent />}
     </div>
   );
 };
@@ -24,8 +24,7 @@ const Event = props => {
 const mapStateToProps = state => {
   return {
     user_id: state.user.id,
-    event_id: state.event.id,
-    event_user: state.event.user_id
+    event: state.event
   };
 };
 
