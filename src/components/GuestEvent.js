@@ -24,7 +24,6 @@ const GuestEvent = ({event}) => {
 const mapStateToProps = state => {
   return {
     event: state.event
-
   };
 };
 

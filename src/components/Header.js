@@ -6,13 +6,16 @@ import { connect } from "react-redux";
 // create conditional statement for rendering components
 // create logout function
 const Header = props => {
-  console.log(props);
   return (
     <div className="header">
-      <Link className="navlink" to="">
+      {/* {props.user.id !== "" ? (
+        <Link className="navlink" to={`/profile/${props.user.id}`}>Profile</Link>
+        <button onClick={logOut}>Log Out</button>
+      )} */}
+      <Link className="navlink" to="/registration">
         Sign Up
       </Link>
-      <Link className="navlink" to="">
+      <Link className="navlink" to="/">
         Login
       </Link>
     </div>
