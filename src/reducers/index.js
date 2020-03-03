@@ -36,11 +36,14 @@ export const reducer = (state = initialState, action) => {
     case "GET_EVENT":
       return {
         ...state,
-        id: action.payload.id,
-        user_id: action.payload.user_id,
-        location: action.payload.location,
-        date: action.payload.date,
-        time: action.payload.time
+        event: {
+          ...state.event,
+          id: action.payload.id,
+          user_id: action.payload.user_id,
+          location: action.payload.location,
+          date: action.payload.date,
+          time: action.payload.time
+        }
       };
     case "LOG_OUT":
       return {
