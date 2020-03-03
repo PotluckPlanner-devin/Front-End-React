@@ -4,58 +4,53 @@ const initialState = {
     username: "",
     password: "",
     email: "",
-    phone: "",
-    user_events: [
-      {
-        id: "",
-        name: "",
-        date: "",
-        time: "",
-        location: "",
-        responded: false,
-        attending: false,
-        hosting: false,
-        assigned_food: [
-          {
-            id: "",
-            name: ""
-          }
-        ]
-      }
-    ]
+    call: ""
   },
+  events: [],
   event: {
     id: "",
-    name: "",
-    date: "",
-    time: "",
+    user_id: "",
     location: "",
-    host_id: "",
-    host_username: "",
-    attendants: [
-      {
-        id: "",
-        username: "",
-        responded: false,
-        attending: false
-      }
-    ],
-    food: [
-      {
-        id: "",
-        name: "",
-        assigned: false,
-        assigned_id: "",
-        assigned_username: "",
-        assigned_email: "",
-        assigned_phone: ""
-      }
-    ]
+    date: "",
+    time: ""
   }
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case "AUTHENTICATE":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          id: action.payload.id,
+          call: `/api/users/${action.payload.id}`
+        }
+      };
+    case "GET_USER":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          username: action.payload.username,
+          email: action.payload.email,
+          password: action.payload.password
+        }
+      };
+    case "GET_EVENTS":
+      return {
+        ...state,
+        events: action.payload
+      };
+    case "GET_EVENT":
+      return {
+        ...state,
+        id: action.payload.id,
+        user_id: action.payload.user_id,
+        location: action.payload.location,
+        date: action.payload.date,
+        time: action.payload.time
+      };
     default:
       return state;
   }

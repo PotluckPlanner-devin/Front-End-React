@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Registration from "./components/Registration";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
+import Event from "./components/Event";
 
 function App() {
   return (
@@ -14,9 +15,11 @@ function App() {
       <Header />
       <div>
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/login" component={Login} />
-          <Route path="/registration" component={Registration} />
+          <Route exact path="/" render={props => <Login {...props} />} />
+          <Route
+            path="/registration"
+            render={props => <Registration {...props} />}
+          />
           <Route path="/profile/:id" component={Profile} />
           <Route path="/event/:id" component={Event} />
         </Switch>
