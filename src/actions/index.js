@@ -31,5 +31,6 @@ export const getEvent = id => dispatch => {
 };
 
 export const logOut = () => {
+  window.localStorage.removeItem("token");
   return { type: "LOG_OUT" };
 };
