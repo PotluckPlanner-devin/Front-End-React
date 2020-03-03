@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 // display event info
 
 const GuestEvent = ({ event }) => {
-  console.log("GEPROPS", event);
-
   return (
     <div>
       <h1>Event Name Here</h1>
