@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card, CardTitle, CardBody, CardSubtitle } from "reactstrap";
 
 // display event info
 const EventCard = props => {
-  console.log(props);
+  console.log("eventcardprops", props);
   return (
-    <div>
-      <Link to={`/event/${props.event.id}`}>Go to Potluck</Link>
-    </div>
+
+    <Card>
+      <CardBody>
+          <CardTitle>Event Name: {props.event.potluckName }</CardTitle>
+          <CardSubtitle>Date: {props.event.date}</CardSubtitle>
+          <Link to={`/event/${props.event.id}`}>View Details</Link>
+      </CardBody>
+    </Card>
   );
 };
 
