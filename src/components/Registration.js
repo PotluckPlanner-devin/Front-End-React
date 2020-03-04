@@ -2,7 +2,7 @@ import React from "react";
 import useForm from "../hooks/useForm";
 import validate from "../utils/validateRegister";
 import axios from "axios";
-import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Col, Row, Button, Form, FormGroup, Label, Input} from "reactstrap";
 
 const Registration = () => {
   const {
