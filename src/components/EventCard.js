@@ -8,7 +8,7 @@ const EventCard = props => {
   return (
     <Card>
       <CardBody>
-          <CardTitle>Event ID: {props.event.id}</CardTitle>
+          <CardTitle>Event Name: {props.event.potluckName }</CardTitle>
           <CardSubtitle>Date: {props.event.date}</CardSubtitle>
           <Link to={`/event/${props.event.id}`}>View Details</Link>
       </CardBody>

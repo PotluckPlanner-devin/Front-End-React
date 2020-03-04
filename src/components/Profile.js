@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUser, getEvents } from "../actions";
+import { Col, Row } from "reactstrap";
 
 // component imports
 import EventCard from "./EventCard";
@@ -15,6 +16,9 @@ const Profile = props => {
   }, []);
 
   return (
+    <Row>
+      <Col></Col>
+      <Col>
     <div>
       <h2>{props.username}</h2>
       <div>
@@ -23,6 +27,9 @@ const Profile = props => {
         ))}
       </div>
     </div>
+    </Col>
+    <Col></Col>
+    </Row>
   );
 };
 
