@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUser, getEvents } from "../actions";
 
@@ -6,10 +7,10 @@ import { getUser, getEvents } from "../actions";
 import EventCard from "./EventCard";
 
 const Profile = props => {
-  console.log(props);
+  const { id } = useParams();
 
   useEffect(() => {
-    props.getUser(props.call);
+    props.getUser(id);
     props.getEvents();
   }, []);
 
@@ -27,7 +28,6 @@ const Profile = props => {
 
 const mapStateToProps = state => {
   return {
-    call: state.user.call,
     username: state.user.username,
     events: state.events
   };

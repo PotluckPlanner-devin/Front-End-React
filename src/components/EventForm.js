@@ -22,12 +22,12 @@ function EventForm ({ errors, touched, status }) {
                     value={EventForm.user_id}
                 />
 
-                <label htmlFor="location">Event Location</label>
-                {touched.location && errors.location && <span style={{ color: "red"}}>{errors.location}</span>}
+                <label htmlFor="locations">Event Locations</label>
+                {touched.locations && errors.locations && <span style={{ color: "red"}}>{errors.locations}</span>}
                 <Field
                     type="text"
-                    name="location"
-                    value={EventForm.location}
+                    name="locations"
+                    value={EventForm.locations}
                 />
 
                 <label htmlFor="date">Event Date</label>
@@ -48,23 +48,25 @@ function EventForm ({ errors, touched, status }) {
 
                 <button type="submit">Submit</button>
             </Form>
-            {events.map(data =>(
+            {events.map(data =>{
+                console.log("THIS IS DATA", data)
+                return (
                 <ul key ={data.id}>
                     <li>User ID: {data.user_id}</li>
-                    <li>Location: {data.location}</li>
+                    <li>locations: {data.locations}</li>
                     <li>Date: {data.date}</li>
                     <li>Time: {data.time}</li>
                 </ul>
-            ))}
+            )})}
         </div>
     )
 }
 
 const FormikEventForm = withFormik({
-    mapPropsToValues({ user_id, location, date, time }) {
+    mapPropsToValues({ user_id, locations, date, time }) {
         return {
             user_id : user_id || "",
-            location : location || "",
+            locations : locations || "",
             date : date || "",
             time : time || "",
         };
@@ -72,11 +74,11 @@ const FormikEventForm = withFormik({
 
     validationSchema: Yup.object().shape({
         user_id: Yup.string()
-            .required("User ID is required "),
-        location: Yup.string()
-            .required("Location is required "),
+            .required("User ID is required"),
+        locations: Yup.string()
+            .required("Locations is required"),
         date: Yup.string()
-            .required("Date is required "),
+            .required("Date is required"),
         time: Yup.string()
             .required("Time is required"),
     }),

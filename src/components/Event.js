@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { getEvent } from "../actions";
+import { getEvent, editEvent } from "../actions";
 
 // component imports
 import HostEvent from "./HostEvent";
@@ -15,18 +15,26 @@ const Event = props => {
   }, []);
 
   return (
-    <div>
-      {props.user === props.event_user ? <HostEvent /> : <GuestEvent />}
-    </div>
+    // <div>
+    //   {props.user === props.event.user_id ? (
+    //     <HostEvent history={props.history} />
+    //   ) : (
+    //     <GuestEvent />
+    //   )}
+    // </div>
+    <HostEvent
+      editEvent={props.editEvent}
+      event={props.event}
+      history={props.history}
+    />
   );
 };
 
 const mapStateToProps = state => {
   return {
     user_id: state.user.id,
-    event_id: state.event.id,
-    event_user: state.event.user_id
+    event: state.event
   };
 };
 
-export default connect(mapStateToProps, { getEvent })(Event);
+export default connect(mapStateToProps, { getEvent, editEvent })(Event);

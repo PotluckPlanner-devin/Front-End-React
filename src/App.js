@@ -22,8 +22,9 @@ function App() {
             render={props => <Registration {...props} />}
           />
           <Route path="/profile/:id" component={Profile} />
-          <Route path="/event/:id" component={Event} />
+          <Route path="/event/:id" render={props => <Event {...props} />} />
           <Route path="/eventform" component={EventForm} />
+          
         </Switch>
         <Footer />
       </div>

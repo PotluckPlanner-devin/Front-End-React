@@ -1,16 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 
-// display event info
+const GuestEvent = ({ event }) => {
+  console.log("GEPROPS", event);
 
-const GuestEvent = props => {
-  console.log(props);
-  return <div>Guest Event!</div>;
+  return (
+    <div>
+      <h1>Event Name Here</h1>
+      <p>Location: {event.location}</p>
+      <p>Date: {event.date}</p>
+      <p>Time: {event.time}</p>
+      <p>FOODS ELEMENT HERE?</p>
+    </div>
+  );
 };
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    event: state.event
   };
 };
 

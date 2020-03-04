@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { authenticate } from "../actions";
+import axios from "axios";
 
 const initialCredentials = {
   username: "",
@@ -20,7 +19,17 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
-    props.authenticate(credentials, props);
+    axios
+      .post(
+        "https://potluckplanner-buildweek.herokuapp.com/api/authentication/login",
+        credentials
+      )
+      .then(res => {
+        console.log("Login Response", res);
+        window.localStorage.setItem("token", res.data.token);
+        props.history.push(`/profile/${res.data.id}`);
+      })
+      .catch(err => console.log("Login Error", err));
     setCredentials(initialCredentials);
   };
 
@@ -62,8 +71,4 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {};
-};
-
-export default connect(mapStateToProps, { authenticate })(Login);
+export default Login;
