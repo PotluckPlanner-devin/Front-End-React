@@ -11,7 +11,8 @@ const initialState = {
     user_id: "",
     location: "",
     date: "",
-    time: ""
+    time: "",
+    food: []
   }
 };
 
@@ -43,6 +44,14 @@ export const reducer = (state = initialState, action) => {
           location: action.payload.location,
           date: action.payload.date,
           time: action.payload.time
+        }
+      };
+    case "GET_EVENT_FOOD":
+      return {
+        ...state,
+        event: {
+          ...state.event,
+          food: action.payload
         }
       };
     case "LOG_OUT":

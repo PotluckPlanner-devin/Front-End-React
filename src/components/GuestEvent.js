@@ -1,24 +1,34 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
 
-const GuestEvent = ({ event }) => {
-  console.log("GEPROPS", event);
+const GuestEvent = props => {
+  const { id } = useParams();
+
+  const bringFood = thisfood => {
+    props.assignFood(id, thisfood);
+  };
 
   return (
     <div>
-      <h1>Event Name Here</h1>
-      <p>Location: {event.location}</p>
-      <p>Date: {event.date}</p>
-      <p>Time: {event.time}</p>
-      <p>FOODS ELEMENT HERE?</p>
+      <h1>{props.event.potluckName}</h1>
+      <p>Location: {props.event.location}</p>
+      <p>Date: {props.event.date}</p>
+      <p>Time: {props.event.time}</p>
+      <div>
+        Food:
+        {props.event.food.map(item => {
+          return (
+            <div>
+              <p>{item.foodName}</p>
+              <button onClick={() => bringFood(item.foodName)}>
+                bring this food
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    event: state.event
-  };
-};
-
-export default connect(mapStateToProps, {})(GuestEvent);
+export default GuestEvent;

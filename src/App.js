@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import PrivateRoute from "./utils/PrivateRoute";
 
 // component imports
 import Header from "./components/Header";
@@ -8,6 +9,7 @@ import Registration from "./components/Registration";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Event from "./components/Event";
+import EventForm from "./components/EventForm";
 
 function App() {
   return (
@@ -20,8 +22,8 @@ function App() {
             path="/registration"
             render={props => <Registration {...props} />}
           />
-          <Route path="/profile/:id" component={Profile} />
-          <Route path="/event/:id" render={props => <Event {...props} />} />
+          <PrivateRoute path="/profile/:id" component={Profile} />
+          <PrivateRoute path="/event/:id" component={Event} />
         </Switch>
         <Footer />
       </div>
