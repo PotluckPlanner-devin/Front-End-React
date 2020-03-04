@@ -27,7 +27,7 @@ export const getEvent = id => dispatch => {
       console.log("Get Event Response", res);
       dispatch({ type: "GET_EVENT", payload: res.data });
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log("Get Event Error", err));
 };
 
 export const logOut = () => {
@@ -43,4 +43,14 @@ export const editEvent = (id, event) => dispatch => {
       dispatch({ type: "EDIT_EVENT", payload: event });
     })
     .catch(err => console.log("Event Put Error", err));
+};
+
+export const getEventFood = id => dispatch => {
+  axiosWithAuth()
+    .get(`/api/food/${id}`)
+    .then(res => {
+      console.log("Get Event Food Response", res);
+      dispatch({ type: "GET_EVENT_FOOD", payload: res.data });
+    })
+    .catch(err => console.log("Get Event Food Error", err));
 };
