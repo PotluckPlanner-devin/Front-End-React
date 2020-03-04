@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 const GuestEvent = ({ event }) => {
-  console.log("GEPROPS", event);
-
   return (
     <div>
       <h1>Event Name Here</h1>
