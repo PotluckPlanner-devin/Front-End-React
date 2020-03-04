@@ -57,7 +57,7 @@ const Login = props => {
             required
             id="password"
             name="password"
-            type="text"
+            type="password"
             value={credentials.password}
             onChange={handleChange}
             autoComplete="off"
