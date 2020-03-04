@@ -34,3 +34,13 @@ export const logOut = () => {
   window.localStorage.removeItem("token");
   return { type: "LOG_OUT" };
 };
+
+export const editEvent = (id, event) => dispatch => {
+  axiosWithAuth()
+    .put(`/api/potluck/${id}`, event)
+    .then(res => {
+      console.log("Event Put Response", res);
+      dispatch({ type: "EDIT_EVENT", payload: event });
+    })
+    .catch(err => console.log("Event Put Error", err));
+};
