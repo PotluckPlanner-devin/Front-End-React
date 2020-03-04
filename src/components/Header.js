@@ -2,29 +2,53 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../actions";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText,
+  Row,
+  Col
+} from 'reactstrap';
 
 const Header = props => {
   return (
     <div>
       {props.user.id !== "" ? (
-        <div className="header">
-          <Link className="navlink" to={`/profile/${props.user.id}`}>
-            Profile
-          </Link>
-          <Link to="/" onClick={props.logOut}>
-            Log Out
-          </Link>
-        </div>
+        <Nav className="header">
+          <NavLink>
+            <Link className="navlink" to={`/profile/${props.user.id}`}>
+              Profile
+            </Link>
+          </NavLink>
+          <NavLink>
+            <Link to="/" onClick={props.logOut}>
+              Log Out
+              </Link>
+          </NavLink>
+        </Nav>
       ) : (
-        <div className="header">
-          <Link className="navlink" to="/registration">
-            Sign Up
-          </Link>
-          <Link className="navlink" to="/">
-            Login
-          </Link>
-        </div>
-      )}
+          <Nav className="header">
+            <NavLink>
+              <Link className="navlink" to="/registration">
+                Sign Up
+                </Link>
+            </NavLink>
+            <NavLink>
+              <Link className="navlink" to="/">
+                Login
+              </Link>
+            </NavLink>
+          </Nav>
+        )}
     </div>
   );
 };
