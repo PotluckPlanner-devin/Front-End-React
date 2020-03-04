@@ -3,28 +3,32 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../actions";
 
+import { Nav } from 'reactstrap';
+
+
 const Header = props => {
   return (
     <div>
       {props.user.id !== "" ? (
-        <div className="header">
-          <Link className="navlink" to={`/profile/${props.user.id}`}>
-            Profile
-          </Link>
-          <Link to="/" onClick={props.logOut}>
-            Log Out
-          </Link>
-        </div>
+
+        <Nav className="header">
+            <Link className="navlink" to={`/profile/${props.user.id}`}>
+              Profile
+            </Link>
+            <Link to="/" onClick={props.logOut}>
+              Log Out
+              </Link>
+        </Nav>
       ) : (
-        <div className="header">
-          <Link className="navlink" to="/registration">
-            Sign Up
-          </Link>
-          <Link className="navlink" to="/">
-            Login
-          </Link>
-        </div>
-      )}
+          <Nav className="header">
+              <Link className="navlink" to="/registration">
+                Sign Up
+                </Link>
+              <Link className="navlink" to="/">
+                Login
+              </Link>
+          </Nav>
+        )}
     </div>
   );
 };

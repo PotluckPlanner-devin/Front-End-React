@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+
 
 const initialCredentials = {
   username: "",
@@ -34,11 +36,13 @@ const Login = props => {
   };
 
   return (
-    <div>
-      <form>
-        <label>
-          Username
-          <input
+    <Form>
+      <Row>
+        <Col md="4"></Col>
+        <Col md="4">
+        <FormGroup>
+          <Label>Username</Label>
+          <Input
             required
             id="username"
             name="username"
@@ -47,28 +51,35 @@ const Login = props => {
             onChange={handleChange}
             autoComplete="off"
           />
-        </label>
-        <label>
-          Password
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label>Password</Label>
+          <Input
             required
             id="password"
             name="password"
-            type="text"
+            type="password"
             value={credentials.password}
             onChange={handleChange}
             autoComplete="off"
           />
-        </label>
-        <button type="submit" onClick={login}>
-          Submit
-        </button>
-      </form>
-      <p>
-        Don't have an account? Sign up <Link to="/registration">here!</Link>
-      </p>
-    </div>
-  );
-};
+        </FormGroup>
 
-export default Login;
+
+        <Button type="submit" onClick={login}>
+          Submit
+        </Button>
+        <p>
+          Don't have an account? Sign up
+        <Link to="/registration">
+            here!
+          </Link>
+        </p>
+        </Col>
+        <Col md=""></Col>
+        </Row>
+    </Form>
+      );
+    };
+    
+    export default Login;
