@@ -3,12 +3,7 @@ import { useParams } from "react-router-dom";
 
 const HostEvent = props => {
   const [editing, setEditing] = useState(false);
-  const [event, setEvent] = useState({
-    user_id: props.event.user_id,
-    location: props.event.location,
-    date: props.event.date,
-    time: props.event.time
-  });
+  const [event, setEvent] = useState(props.event);
   const [food, setFood] = useState("");
 
   const { id } = useParams();
@@ -46,6 +41,10 @@ const HostEvent = props => {
     setEditing(!editing);
   };
 
+  const bringFood = thisFood => {
+    props.assignFood(id, thisFood);
+  };
+
   return (
     <>
       {event.location === "" ? (
@@ -53,22 +52,23 @@ const HostEvent = props => {
       ) : (
         <div>
           <div>
-            <h1>Event Name Here</h1>
+            <h1>{props.event.potluckName}</h1>
             <p>Location: {props.event.location}</p>
             <p>Date: {props.event.date}</p>
             <p>Time: {props.event.time}</p>
           </div>
           {editing === true ? (
             <form onSubmit={submitEdit}>
-              {/* <label>
-            Name
-            <input
-              name="name"
-              type="text"
-              onChange={handleChange}
-              value="Event Name"
-            />
-          </label> */}
+              <label>
+                Name
+                <input
+                  name="name"
+                  type="text"
+                  onChange={handleChange}
+                  value={event.potluckName}
+                  placeholder="New Name"
+                />
+              </label>
               <label>
                 Location
                 <input
@@ -117,6 +117,9 @@ const HostEvent = props => {
                   <p>{item.foodName}</p>
                   <button onClick={() => deleteThisFood(item.foodName)}>
                     x
+                  </button>
+                  <button onClick={() => bringFood(item.foodName)}>
+                    bring this food
                   </button>
                 </div>
               );
