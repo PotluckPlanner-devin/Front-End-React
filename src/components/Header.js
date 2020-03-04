@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../actions";
 
-// create elements to be displayed when loged in
-// create conditional statement for rendering components
-// create logout function
 const Header = props => {
   return (
     <div>
