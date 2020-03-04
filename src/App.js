@@ -9,7 +9,6 @@ import Registration from "./components/Registration";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Event from "./components/Event";
-import EventForm from "./components/EventForm";
 
 function App() {
   return (

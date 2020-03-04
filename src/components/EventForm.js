@@ -5,6 +5,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 const EventForm = () => {
     const { id } = useParams();
         const [addEvent, setAddEvent] = useState({
+            potluckName: '',
             user_id: id,
             location: '',
             date: '',
@@ -33,6 +34,15 @@ const EventForm = () => {
         return (
             <div>
                 <form onSubmit={handleSubmit}>
+                        <label>Event Name</label>
+                            <input
+                                name="potluckName"
+                                type="text"
+                                placeholder="name"
+                                value={addEvent.potluckName}
+                                onChange={handleChange}
+                                required
+                            />
                         <label>Location</label>
                             <input
                                 name="location"
