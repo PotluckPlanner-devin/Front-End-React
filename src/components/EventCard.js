@@ -6,6 +6,7 @@ import { Card, CardTitle, CardBody, CardSubtitle } from "reactstrap";
 const EventCard = props => {
   console.log("eventcardprops", props);
   return (
+
     <Card>
       <CardBody>
           <CardTitle>Event Name: {props.event.potluckName }</CardTitle>

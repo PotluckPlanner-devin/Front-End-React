@@ -6,9 +6,17 @@ import { Col, Row } from "reactstrap";
 
 // component imports
 import EventCard from "./EventCard";
+import EventForm from "./EventForm";
 
 const Profile = props => {
   const { id } = useParams();
+
+  const [ adding, setAdding ] = useState(false);
+
+  const toggleForm = e => {
+    e.preventDefault();
+    setAdding(!adding);
+  }
 
   useEffect(() => {
     props.getUser(id);
@@ -25,6 +33,10 @@ const Profile = props => {
         {props.events.map(event => (
           <EventCard event={event} />
         ))}
+      </div>
+      <button onClick = {toggleForm}>Add a Potluck</button>
+      <div>
+        {adding === true ? <EventForm id = {id}/> : ""}
       </div>
     </div>
     </Col>

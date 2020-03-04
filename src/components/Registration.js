@@ -21,6 +21,7 @@ const Registration = () => {
         password: values.password
       }
     )
+
       .then(response => {
         console.log("Registration Post response", response);
       })
