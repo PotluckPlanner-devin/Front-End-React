@@ -23,7 +23,6 @@ function App() {
           />
           <Route path="/profile/:id" component={Profile} />
           <Route path="/event/:id" render={props => <Event {...props} />} />
-          <Route path="/eventform/:id" component={EventForm} />
         </Switch>
         <Footer />
       </div>
