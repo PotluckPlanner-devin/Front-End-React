@@ -8,6 +8,7 @@ import Registration from "./components/Registration";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Event from "./components/Event";
+import EventForm from "./components/EventForm";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           />
           <Route path="/profile/:id" component={Profile} />
           <Route path="/event/:id" component={Event} />
+          <Route path="/eventform" component={EventForm} />
         </Switch>
         <Footer />
       </div>
