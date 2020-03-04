@@ -1,80 +1,82 @@
-import React, { Component } from "react";
+import React from "react";
+import useForm from "../hooks/useForm";
+import validate from "../utils/validateRegister";
 import axios from "axios";
 
-export default class Registration extends Component {
-  constructor(props) {
-    super(props);
+const Registration = () => {
+  const { 
+    handleChange, 
+    handleSubmit, 
+    values, 
+    errors } = useForm( submit, validate );
 
-    this.state = {
-      username: "",
-      email: "",
-      password: ""
-    };
+  function submit() {
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
+    axios.post(
+      "https://potluckplanner-buildweek.herokuapp.com/api/authentication/register",
+      {
+        username: values.username,
+        email: values.email,
+        password: values.password
+      }
+    )
+    .then(response => {
+      console.log("Registration Post response", response);
+    })
+    .catch(error => {
+      console.log("Registration post error", error);
     });
   }
 
-  handleSubmit(event) {
-    const { username, email, password } = this.state;
+  return (
+    <div>
+      <form onSubmit={handleSubmit} noValidate>
+        <div>
+          <label>Username</label>
+          <div>
+            <input
+              className={`${errors.username && "inputError"}`}
+              name="username"
+              type="text"
+              placeholder="username"
+              value={values.username}
+              onChange={handleChange}
+            />
+            {errors.username && <p className="error">{errors.username}</p>}
+          </div>
+        </div>
+        <div>
+          <label>Email</label>
+          <div>
+            <input
+              className={`${errors.email && "inputError"}`}
+              name="email"
+              type="email"
+              placeholder="email"
+              value={values.email}
+              onChange={handleChange}
+            />
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
+        </div>
+        <div>
+          <label>Password</label>
+          <div>
+            <input
+              className={`${errors.password && "inputError"}`}
+              name="password"
+              type="password"
+              placeholder="password"
+              value={values.password}
+              onChange={handleChange}
+            />
+            {errors.password && <p className="error">{errors.password}</p>}
+          </div>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
 
-    axios
-      .post(
-        "https://potluckplanner-buildweek.herokuapp.com/api/authentication/register",
-        {
-          username: username,
-          email: email,
-          password: password
-        }
-      )
-      .then(response => {
-        console.log("response", response);
-        this.props.history.push("/");
-      })
-      .catch(error => {
-        console.log("error", error);
-      });
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            placeholder="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
-
-          <button type="submit">Register</button>
-        </form>
-      </div>
-    );
-  }
-}
+export default Registration;
