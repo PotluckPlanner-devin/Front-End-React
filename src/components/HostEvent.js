@@ -9,11 +9,16 @@ const HostEvent = props => {
     date: props.event.date,
     time: props.event.time
   });
+  const [food, setFood] = useState("");
+
   const { id } = useParams();
-  console.log(id);
 
   const toggleEdit = () => {
     setEditing(!editing);
+  };
+
+  const handleFoodChange = e => {
+    setFood(e.target.value);
   };
 
   const handleChange = e => {
@@ -21,6 +26,18 @@ const HostEvent = props => {
       ...event,
       [e.target.name]: e.target.value
     });
+  };
+
+  const submitFood = e => {
+    e.preventDefault();
+    props.addFood(id, food);
+    props.setBool(bool => !bool);
+    setFood("");
+  };
+
+  const deleteThisFood = thisFood => {
+    props.deleteFood(id, thisFood);
+    props.setBool(bool => !bool);
   };
 
   const submitEdit = e => {
@@ -40,7 +57,6 @@ const HostEvent = props => {
             <p>Location: {props.event.location}</p>
             <p>Date: {props.event.date}</p>
             <p>Time: {props.event.time}</p>
-            <p>FOODS ELEMENT HERE?</p>
           </div>
           {editing === true ? (
             <form onSubmit={submitEdit}>
@@ -67,7 +83,7 @@ const HostEvent = props => {
                 Date
                 <input
                   name="date"
-                  type="text"
+                  type="date"
                   onChange={handleChange}
                   value={event.date}
                   placeholder="New Date"
@@ -77,7 +93,7 @@ const HostEvent = props => {
                 Time
                 <input
                   name="time"
-                  type="text"
+                  type="time"
                   onChange={handleChange}
                   value={event.time}
                   placeholder="New Time"
@@ -93,6 +109,31 @@ const HostEvent = props => {
           <button onClick={toggleEdit}>
             {editing === true ? "Cancel Edit" : "Edit Event"}
           </button>
+          <div>
+            Food:
+            {props.event.food.map(item => {
+              return (
+                <div>
+                  <p>{item.foodName}</p>
+                  <button onClick={() => deleteThisFood(item.foodName)}>
+                    x
+                  </button>
+                </div>
+              );
+            })}
+            <form onSubmit={submitFood}>
+              <label>
+                <input
+                  name="foodName"
+                  type="text"
+                  onChange={handleFoodChange}
+                  value={food}
+                  placeholder="Add Food"
+                />
+              </label>
+              <button type="submit">Add Food</button>
+            </form>
+          </div>
         </div>
       )}
     </>

@@ -19,7 +19,7 @@ const Profile = props => {
       <h2>{props.username}</h2>
       <div>
         {props.events.map(event => (
-          <EventCard event={event} />
+          <EventCard key={event.id} event={event} />
         ))}
       </div>
     </div>
