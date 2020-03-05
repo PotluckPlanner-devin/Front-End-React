@@ -33,8 +33,8 @@ const Registration = props => {
   return (
     <Form onSubmit={handleSubmit} noValidate>
       <Row>
-        <Col md="4"></Col>
-        <Col md="4">
+        <Col md="4" sm="4" xs="4"></Col>
+        <Col md="4" sm="4" xs="4">
           <FormGroup>
             <Label>Username</Label>
             <Input
@@ -74,7 +74,7 @@ const Registration = props => {
           </FormGroup>
           <Button type="submit">Submit</Button>
         </Col>
-        <Col md=""></Col>
+        <Col md="4" sm="4" xs="4"></Col>
       </Row>
     </Form>
   );
