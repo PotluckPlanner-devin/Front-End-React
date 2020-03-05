@@ -10,7 +10,7 @@ import EventForm from "./EventForm";
 
 const Profile = props => {
   const { id } = useParams();
-
+  const [bool, setBool] = useState(false);
   const [adding, setAdding] = useState(false);
 
   const toggleForm = e => {
@@ -21,7 +21,7 @@ const Profile = props => {
   useEffect(() => {
     props.getUser(id);
     props.getEvents();
-  }, []);
+  }, [bool]);
 
   return (
     <Row className="profile-page-card-container">
@@ -34,8 +34,12 @@ const Profile = props => {
               <EventCard key={event.id} event={event} />
             ))}
           </div>
-          <Button onClick={toggleForm} block>Add a Potluck</Button>
-          <div>{adding === true ? <EventForm id={id} /> : ""}</div>
+          <Button onClick={toggleForm} block>
+            Add a Potluck
+          </Button>
+          <div>
+            {adding === true ? <EventForm id={id} setBool={setBool} /> : ""}
+          </div>
         </div>
       </Col>
       <Col></Col>
