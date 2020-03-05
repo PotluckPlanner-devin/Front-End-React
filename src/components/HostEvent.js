@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Col, Button, Label, Input, Form } from "reactstrap";
 
 const HostEvent = props => {
   console.log("host");
@@ -54,6 +55,7 @@ const HostEvent = props => {
         <div>Loading...</div>
       ) : (
         <div>
+          <Col>
           <div>
             <h1>{props.event.potluckName}</h1>
             <p>Location: {props.event.location}</p>
@@ -61,85 +63,86 @@ const HostEvent = props => {
             <p>Time: {props.event.time}</p>
           </div>
           {editing === true ? (
-            <form onSubmit={submitEdit}>
-              <label>
-                Name
-                <input
+            <Form onSubmit={submitEdit}>
+              <Label>
+                Name (Not editable)
+                <Input
                   name="name"
                   type="text"
                   onChange={handleChange}
                   value={event.potluckName}
                   placeholder="New Name"
                 />
-              </label>
-              <label>
+              </Label>
+              <Label>
                 Location
-                <input
+                <Input
                   name="location"
                   type="text"
                   onChange={handleChange}
                   value={event.location}
                   placeholder="New Location"
                 />
-              </label>
-              <label>
+              </Label>
+              <Label>
                 Date
-                <input
+                <Input
                   name="date"
                   type="date"
                   onChange={handleChange}
                   value={event.date}
                   placeholder="New Date"
                 />
-              </label>
-              <label>
+              </Label>
+              <Label>
                 Time
-                <input
+                <Input
                   name="time"
                   type="time"
                   onChange={handleChange}
                   value={event.time}
                   placeholder="New Time"
                 />
-              </label>
-              <button type="submit" onClick={submitEdit}>
+              </Label>
+              <Button color = "primary" type="submit" onClick={submitEdit}>
                 Submit
-              </button>
-            </form>
+              </Button>
+            </Form>
           ) : (
             ""
           )}
-          <button onClick={toggleEdit}>
+          <Button color = "primary" onClick={toggleEdit}>
             {editing === true ? "Cancel Edit" : "Edit Event"}
-          </button>
+          </Button>
           <div>
             Food:
             {props.event.food.map(item => {
               return (
                 <div>
                   <p>{item.foodName}</p>
-                  <button onClick={() => deleteThisFood(item.foodName)}>
+                  <Button color = "primary" onClick={() => deleteThisFood(item.foodName)}>
                     x
-                  </button>
-                  <button onClick={() => bringFood(item.foodName)}>
-                    bring this food
-                  </button>
+                  </Button>
+                  <Button color = {item.isTaken === 0 ? "primary" : "secondary"} onClick={() => bringFood(item.foodName)}>
+                    {item.isTaken === 0 ? "Bring This Food" : "Food Already Taken"}
+                  </Button>
                 </div>
               );
             })}
-            <form onSubmit={submitFood}>
-              <label>
-                <input
+            <Form onSubmit={submitFood}>
+              <Label>
+                <Input
                   name="foodName"
                   type="text"
                   onChange={handleFoodChange}
                   value={food}
                   placeholder="Add Food"
                 />
-              </label>
-              <button type="submit">Add Food</button>
-            </form>
+              </Label>
+              <Button type="submit">Add Food</Button>
+            </Form>
           </div>
+          </Col>
         </div>
       )}
     </>

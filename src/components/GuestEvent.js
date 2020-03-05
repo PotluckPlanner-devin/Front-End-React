@@ -9,7 +9,10 @@ const GuestEvent = props => {
 
   const bringFood = thisfood => {
     props.assignFood(id, thisfood);
+    console.log("food test", thisfood);
   };
+
+  //{item.isTaken === 0 ? className = "taken" : className="not-taken" }
 
   return (
     <div>
@@ -25,19 +28,22 @@ const GuestEvent = props => {
             Food:
             {props.event.food.map(item => {
               return (
-                <div>
+                <div className={item.isTaken === 0 ? "" : "food-taken"}>
                   <Row>
                     <Col lg="9" md="9">
                       <Col lg="9">
                         <br></br>
                         <p>{item.foodName.toUpperCase()}</p>
                       </Col>
+
                       <Button
-                        color="primary"
+                        color={item.isTaken === 0 ? "primary" : "secondary"}
                         onClick={() => bringFood(item.foodName)}
                         block
                       >
-                        Bring This Food
+                        {item.isTaken === 0
+                          ? "Bring This Food"
+                          : "Food Already Taken"}
                       </Button>
                     </Col>
                   </Row>
