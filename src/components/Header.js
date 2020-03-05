@@ -12,30 +12,33 @@ const Header = props => {
   return (
     <div>
       {props.isLoggedIn ? (
-        <Nav className="header">
-          <Link className="navlink" to={`/profile/${props.user.id}`}>
-            Profile
-          </Link>
-          <Link to="/" onClick={props.logOut}>
-            Log Out
-          </Link>
-        </Nav>
+        <Navbar color="dark">
+          <Col></Col>
+          <Col>
+            <Nav className="header">
+              <Col>
+                <Media object src={NavLogo} alt="potluck-logo" />
+              </Col>
+              <Col className="nav-bar-links">
+                <Link className="navlink" to={`/profile/${props.user.id}`}>Profile</Link>
+                <Link to="/" onClick={props.logOut}>Log Out</Link>
+              </Col>
+            </Nav>
+          </Col>
+          <Col></Col>
+        </Navbar>
       ) : (
           <Navbar color="dark">
             <Col></Col>
             <Col>
               <Nav className="header">
-              <Col>
-                <Media object src={NavLogo} alt="potluck-logo" />
+                <Col>
+                  <Media object src={NavLogo} alt="potluck-logo" />
                 </Col>
                 <Col className="nav-bar-links">
-                <Link className="navlink" to="/registration">
-                  Sign Up
-              </Link>
-                <Link className="navlink" to="/">
-                  Login
-              </Link>
-              </Col>
+                  <Link className="navlink" to="/registration">Sign Up</Link>
+                  <Link className="navlink" to="/">Login</Link>
+                </Col>
               </Nav>
             </Col>
             <Col></Col>
