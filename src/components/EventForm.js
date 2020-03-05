@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { Col, Row, Button, Form, Label, Input } from "reactstrap";
 
 const EventForm = props => {
   const { id } = useParams();
@@ -36,9 +37,9 @@ const EventForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>Event Name</label>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <Label>Event Name</Label>
+        <Input
           name="potluckName"
           type="text"
           placeholder="name"
@@ -46,8 +47,8 @@ const EventForm = props => {
           onChange={handleChange}
           required
         />
-        <label>Location</label>
-        <input
+        <Label>Location</Label>
+        <Input
           name="location"
           type="text"
           placeholder="location"
@@ -55,24 +56,24 @@ const EventForm = props => {
           onChange={handleChange}
           required
         />
-        <label>Event Date</label>
-        <input
+        <Label>Event Date</Label>
+        <Input
           name="date"
           type="date"
           placeholder="date"
           value={addEvent.date}
           onChange={handleChange}
         />
-        <label>Event Time</label>
-        <input
+        <Label>Event Time</Label>
+        <Input
           name="time"
           type="time"
           placeholder="time"
           value={addEvent.time}
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
-      </form>
+        <Button type="submit">Submit</Button>
+      </Form>
     </div>
   );
 };
