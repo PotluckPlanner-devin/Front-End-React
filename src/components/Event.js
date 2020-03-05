@@ -11,6 +11,7 @@ import GuestEvent from "./GuestEvent";
 const Event = props => {
   const [bool, setBool] = useState(false);
   const { id } = useParams();
+  console.log(id);
 
   const deleteFood = (id, food) => {
     console.log(id);
@@ -34,9 +35,10 @@ const Event = props => {
 
   const assignFood = (id, food) => {
     axiosWithAuth()
-      .post(`/api/food/${id}/idTaken`, { foodName: food })
+      .post(`/api/food/${id}/isTaken`, { foodName: food })
       .then(res => {
         console.log("Assign Food Response", res);
+        setBool(!bool);
       })
       .catch(err => console.log("Assign Food Error", err));
   };
@@ -47,21 +49,26 @@ const Event = props => {
   }, [bool]);
 
   return (
-    // <div>
-    //   {props.user === props.event.user_id ? (
-    //     <HostEvent history={props.history} />
-    //   ) : (
-    //     <GuestEvent />
-    //   )}
-    // </div>
-    <HostEvent
-      editEvent={props.editEvent}
-      event={props.event}
-      history={props.history}
-      deleteFood={deleteFood}
-      addFood={addFood}
-      setBool={setBool}
-    />
+    <div>
+      {props.event.location === "" ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          {props.user_id === props.event.user_id ? (
+            <HostEvent
+              editEvent={props.editEvent}
+              event={props.event}
+              deleteFood={deleteFood}
+              addFood={addFood}
+              setBool={setBool}
+              assignFood={assignFood}
+            />
+          ) : (
+            <GuestEvent event={props.event} assignFood={assignFood} />
+          )}
+        </div>
+      )}
+    </div>
   );
 };
 

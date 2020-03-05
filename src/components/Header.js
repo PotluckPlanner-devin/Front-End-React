@@ -2,32 +2,47 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../actions";
+import { Col, Row, Nav, Media, Navbar, NavItem } from "reactstrap";
+import NavLogo from "../img/LogoPoshPotluck.png";
 
-import { Nav } from 'reactstrap';
 
 
 const Header = props => {
+  console.log("header props", props);
   return (
     <div>
-      {props.user.id !== "" ? (
-
-        <Nav className="header">
-            <Link className="navlink" to={`/profile/${props.user.id}`}>
-              Profile
-            </Link>
-            <Link to="/" onClick={props.logOut}>
-              Log Out
-              </Link>
-        </Nav>
+      {props.isLoggedIn ? (
+        <Navbar color="dark">
+          <Col></Col>
+          <Col>
+            <Nav className="header">
+              <Col>
+                <Media object src={NavLogo} alt="potluck-logo" />
+              </Col>
+              <Col className="nav-bar-links">
+                <Link className="navlink" to={`/profile/${props.user.id}`}>Profile</Link>
+                <Link to="/" onClick={props.logOut}>Log Out</Link>
+              </Col>
+            </Nav>
+          </Col>
+          <Col></Col>
+        </Navbar>
       ) : (
-          <Nav className="header">
-              <Link className="navlink" to="/registration">
-                Sign Up
-                </Link>
-              <Link className="navlink" to="/">
-                Login
-              </Link>
-          </Nav>
+          <Navbar color="dark">
+            <Col></Col>
+            <Col>
+              <Nav className="header">
+                <Col>
+                  <Media object src={NavLogo} alt="potluck-logo" />
+                </Col>
+                <Col className="nav-bar-links">
+                  <Link className="navlink" to="/registration">Sign Up</Link>
+                  <Link className="navlink" to="/">Login</Link>
+                </Col>
+              </Nav>
+            </Col>
+            <Col></Col>
+          </Navbar>
         )}
     </div>
   );
@@ -35,6 +50,7 @@ const Header = props => {
 
 const mapStateToProps = state => {
   return {
+    isLoggedIn: state.isLoggedIn,
     user: state.user
   };
 };

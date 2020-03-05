@@ -69,12 +69,7 @@ const Login = props => {
         <Button type="submit" onClick={login}>
           Submit
         </Button>
-        <p>
-          Don't have an account? Sign up
-        <Link to="/registration">
-            here!
-          </Link>
-        </p>
+        <p>Don't have an account? Sign up<Link to="/registration"> here!</Link></p>
         </Col>
         <Col md=""></Col>
         </Row>
