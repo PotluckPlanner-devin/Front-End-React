@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUser, getEvents } from "../actions";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Button } from "reactstrap";
 
 // component imports
 import EventCard from "./EventCard";
@@ -24,17 +24,17 @@ const Profile = props => {
   }, []);
 
   return (
-    <Row>
+    <Row className="profile-page-card-container">
       <Col></Col>
       <Col>
         <div>
-          <h2>{props.username}</h2>
+          <h2 className="profile-welcome-text">Welcome {props.username}</h2>
           <div>
             {props.events.map(event => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
-          <button onClick={toggleForm}>Add a Potluck</button>
+          <Button onClick={toggleForm} block>Add a Potluck</Button>
           <div>{adding === true ? <EventForm id={id} /> : ""}</div>
         </div>
       </Col>
