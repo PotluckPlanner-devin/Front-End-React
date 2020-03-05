@@ -1,5 +1,8 @@
 
-
+nav a {
+  text-decoration: none;
+  color: #494949;
+}
 
 /*Header*/
 .header {
@@ -13,6 +16,9 @@
   display:flex;
   justify-content:space-between;
   align-items: center;
+}
+.nav-container {
+  background-color: #C8F7EA;
 }
 
 /*Footer*/
@@ -45,4 +51,13 @@ code {
 .profile-page-card-container {
   display: flex;
   justify-content: center;
+}
+
+ .primary-button {
+  background-color: #C8F7EA !important;
+  color: #4BBC51 !important;
+}
+
+.second-button a {
+  color: white !important;
 }

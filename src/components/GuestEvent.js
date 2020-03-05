@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Col, Row, Button } from "reactstrap";
+import { Col, Row, Button, ButtonToolbar } from "reactstrap";
 
 const GuestEvent = props => {
   console.log("guest");
@@ -35,10 +35,15 @@ const GuestEvent = props => {
               <Col lg = "9">
               <br></br><p>{item.foodName.toUpperCase()}</p>
               </Col>
-
-              <Button color= {item.isTaken === 0 ? "primary" : "secondary"} onClick={() => bringFood(item.foodName)} block >
+            <ButtonToolbar>
+              <Button color={item.isTaken === 0 ? "secondary" : "secondary"}
+                      className={item.isTaken === 1 ? "primary-button" : "secondary-button"}
+                      onClick={() => bringFood(item.foodName)} 
+                      block 
+              >
                 {item.isTaken === 0 ? "Bring This Food" : "Food Already Taken"}
               </Button>
+              </ButtonToolbar>
               </Col>
               </Row>
             </div>
