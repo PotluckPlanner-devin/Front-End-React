@@ -35,3 +35,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Profile Page*/
+
+.profile-welcome-text {
+  text-align: center;
+}
+
+.profile-page-card-container {
+  display: flex;
+  justify-content: center;
+}
