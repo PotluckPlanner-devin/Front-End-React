@@ -7,6 +7,7 @@ const HostEvent = props => {
   const [editing, setEditing] = useState(false);
   const [event, setEvent] = useState(props.event);
   const [food, setFood] = useState("");
+  console.log(event);
 
   const { id } = useParams();
 
