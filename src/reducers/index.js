@@ -1,4 +1,5 @@
 const initialState = {
+  isLoggedIn: false,
   user: {
     id: "",
     username: "",
@@ -12,6 +13,7 @@ const initialState = {
     location: "",
     date: "",
     time: "",
+    potluckName: "",
     food: []
   }
 };
@@ -21,6 +23,7 @@ export const reducer = (state = initialState, action) => {
     case "GET_USER":
       return {
         ...state,
+        isLoggedIn: true,
         user: {
           ...state.user,
           id: action.payload.id,
@@ -43,7 +46,8 @@ export const reducer = (state = initialState, action) => {
           user_id: action.payload.user_id,
           location: action.payload.location,
           date: action.payload.date,
-          time: action.payload.time
+          time: action.payload.time,
+          potluckName: action.payload.potluckName
         }
       };
     case "GET_EVENT_FOOD":
@@ -56,8 +60,7 @@ export const reducer = (state = initialState, action) => {
       };
     case "LOG_OUT":
       return {
-        ...state,
-        state: initialState
+        ...initialState
       };
     default:
       return state;

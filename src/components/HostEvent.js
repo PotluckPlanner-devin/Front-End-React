@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const HostEvent = props => {
+  console.log("host");
+  console.log("host props", props);
   const [editing, setEditing] = useState(false);
   const [event, setEvent] = useState(props.event);
   const [food, setFood] = useState("");

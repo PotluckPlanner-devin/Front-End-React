@@ -30,9 +30,9 @@ export const getEvent = id => dispatch => {
     .catch(err => console.log("Get Event Error", err));
 };
 
-export const logOut = () => {
+export const logOut = () => dispatch => {
   window.localStorage.removeItem("token");
-  return { type: "LOG_OUT" };
+  dispatch({ type: "LOG_OUT" });
 };
 
 export const editEvent = (id, event) => dispatch => {

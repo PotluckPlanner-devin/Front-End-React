@@ -11,6 +11,7 @@ import GuestEvent from "./GuestEvent";
 const Event = props => {
   const [bool, setBool] = useState(false);
   const { id } = useParams();
+  console.log(id);
 
   const deleteFood = (id, food) => {
     console.log(id);
@@ -49,17 +50,23 @@ const Event = props => {
 
   return (
     <div>
-      {props.user === props.event.user_id ? (
-        <HostEvent
-          editEvent={props.editEvent}
-          event={props.event}
-          deleteFood={deleteFood}
-          addFood={addFood}
-          setBool={setBool}
-          assignFood={assignFood}
-        />
+      {props.event.location === "" ? (
+        <div>Loading...</div>
       ) : (
-        <GuestEvent event={props.event} assignFood={assignFood} />
+        <div>
+          {props.user_id === props.event.user_id ? (
+            <HostEvent
+              editEvent={props.editEvent}
+              event={props.event}
+              deleteFood={deleteFood}
+              addFood={addFood}
+              setBool={setBool}
+              assignFood={assignFood}
+            />
+          ) : (
+            <GuestEvent event={props.event} assignFood={assignFood} />
+          )}
+        </div>
       )}
     </div>
   );

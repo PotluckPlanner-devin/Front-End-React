@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 const GuestEvent = props => {
+  console.log("guest");
+  console.log("guest props", props);
   const { id } = useParams();
 
   const bringFood = thisfood => {

@@ -2,39 +2,38 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../actions";
-
-import { Nav } from 'reactstrap';
-
+import { Nav } from "reactstrap";
 
 const Header = props => {
+  console.log("header props", props);
   return (
     <div>
-      {props.user.id !== "" ? (
-
+      {props.isLoggedIn ? (
         <Nav className="header">
-            <Link className="navlink" to={`/profile/${props.user.id}`}>
-              Profile
-            </Link>
-            <Link to="/" onClick={props.logOut}>
-              Log Out
-              </Link>
+          <Link className="navlink" to={`/profile/${props.user.id}`}>
+            Profile
+          </Link>
+          <Link to="/" onClick={props.logOut}>
+            Log Out
+          </Link>
         </Nav>
       ) : (
-          <Nav className="header">
-              <Link className="navlink" to="/registration">
-                Sign Up
-                </Link>
-              <Link className="navlink" to="/">
-                Login
-              </Link>
-          </Nav>
-        )}
+        <Nav className="header">
+          <Link className="navlink" to="/registration">
+            Sign Up
+          </Link>
+          <Link className="navlink" to="/">
+            Login
+          </Link>
+        </Nav>
+      )}
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
+    isLoggedIn: state.isLoggedIn,
     user: state.user
   };
 };
