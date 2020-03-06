@@ -12,7 +12,7 @@ const Header = props => {
   return (
     <div>
       {props.isLoggedIn ? (
-        <Navbar color="dark">
+        <Navbar className="nav-container">
           <Col></Col>
           <Col>
             <Nav className="header">
@@ -28,7 +28,7 @@ const Header = props => {
           <Col></Col>
         </Navbar>
       ) : (
-          <Navbar color="dark">
+          <Navbar className="nav-container">
             <Col></Col>
             <Col>
               <Nav className="header">
