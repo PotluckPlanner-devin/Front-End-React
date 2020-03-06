@@ -104,14 +104,14 @@ const HostEvent = props => {
                   placeholder="New Time"
                 />
               </Label>
-              <Button color = "primary" type="submit" onClick={submitEdit}>
+              <Button color = "secondary" type="submit" onClick={submitEdit}>
                 Submit
               </Button>
             </Form>
           ) : (
             ""
           )}
-          <Button color = "primary" onClick={toggleEdit}>
+          <Button color = "secondary" onClick={toggleEdit}>
             {editing === true ? "Cancel Edit" : "Edit Event"}
           </Button>
           <div>
@@ -120,10 +120,12 @@ const HostEvent = props => {
               return (
                 <div>
                   <p>{item.foodName}</p>
-                  <Button color = "primary" onClick={() => deleteThisFood(item.foodName)}>
+                  <Button color = "secondary" onClick={() => deleteThisFood(item.foodName)}>
                     x
                   </Button>
-                  <Button color = {item.isTaken === 0 ? "primary" : "secondary"} onClick={() => bringFood(item.foodName)}>
+                  <Button color = {item.isTaken === 0 ? "secondary" : "secondary"}
+                          className={item.isTaken === 1 ? "primary-button" : "secondary-button"}
+                          onClick={() => bringFood(item.foodName)}>
                     {item.isTaken === 0 ? "Bring This Food" : "Food Already Taken"}
                   </Button>
                 </div>
