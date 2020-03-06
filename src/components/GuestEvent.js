@@ -9,11 +9,10 @@ const GuestEvent = props => {
 
   const bringFood = thisfood => {
     props.assignFood(id, thisfood);
-    console.log("food test", thisfood );
+    console.log("food test", thisfood);
   };
 
   //{item.isTaken === 0 ? className = "taken" : className="not-taken" }
-
 
   return (
     <div>
