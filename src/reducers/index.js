@@ -50,6 +50,19 @@ export const reducer = (state = initialState, action) => {
           potluckName: action.payload.potluckName
         }
       };
+    case "EDIT_EVENT":
+      return {
+        ...state,
+        event: {
+          ...state.event,
+          id: action.payload.id,
+          user_id: action.payload.user_id,
+          location: action.payload.location,
+          date: action.payload.date,
+          time: action.payload.time,
+          potluckName: action.payload.potluckName
+        }
+      };
     case "GET_EVENT_FOOD":
       return {
         ...state,
