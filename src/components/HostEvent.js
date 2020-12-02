@@ -54,6 +54,7 @@ const HostEvent = props => {
 
   const bringFood = thisFood => {
     props.assignFood(id, thisFood);
+    props.setBool(bool => !bool);
   };
 
   return (
